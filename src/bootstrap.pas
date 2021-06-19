@@ -17,6 +17,11 @@ type
 
     TAppServiceProvider = class(TDaemonAppServiceProvider)
     protected
+        function buildDispatcher(
+            const ctnr : IDependencyContainer;
+            const routeMatcher : IRouteMatcher;
+            const config : IAppConfiguration
+        ) : IDispatcher; override;
 
     public
         procedure register(const container : IDependencyContainer); override;
@@ -38,9 +43,28 @@ uses
     (*! -------------------------------
      *   controllers factory
      *----------------------------------- *)
-    {---- put your controller factory here ---};
+    {---- put your controller factory here ---},
+    HomeControllerFactory;
 
 
+    function TAppServiceProvider.buildDispatcher(
+        const ctnr : IDependencyContainer;
+        const routeMatcher : IRouteMatcher;
+        const config : IAppConfiguration
+    ) : IDispatcher;
+    begin
+        ctnr.add('middlewares.app', TMiddlewareListFactory.create());
+
+        ctnr.add(
+            'my.dispatcher',
+            TDispatcherFactory.create(
+                ctnr['middlewares.app'] as IMiddlewareLinkList,
+                routeMatcher,
+                TRequestResponseFactory.create()
+            )
+        );
+        result := ctnr['my.dispatcher'] as IDispatcher;
+    end;
 
     procedure TAppServiceProvider.register(const container : IDependencyContainer);
     begin

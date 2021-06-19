@@ -9,3 +9,9 @@
 {%dependencies.inc}
 
 {---put your middleware-related dependencies registration here---}
+
+container.add(
+    'throttle-one-request-per-minute',
+    TThrottleMiddlewareFactory.create()
+        .ratePerMinute(1)
+);
