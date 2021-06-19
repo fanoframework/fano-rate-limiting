@@ -3,7 +3,7 @@
 [SCGI](https://python.ca/scgi/protocol.txt) web application using Fano Framework, Pascal web application framework to demonstrates how to use rate limit middleware.
 [Learn more](https://fanoframework.github.io/utilities/rate-limit/)
 
-[![Rate limiting video tutorial](https://fanoframework.github.io/assets/images/func-as-controller.png){:class="image fit"}](https://youtu.be/dfmArIN4s-o "Rate limiting video tutorial")
+[![Rate limiting video tutorial](https://fanoframework.github.io/assets/images/video-preview.png){:class="image fit"}](https://youtu.be/dfmArIN4s-o "Rate limiting video tutorial")
 
 This project is generated using [Fano CLI](https://github.com/fanoframework/fano-cli)
 command line tools to help scaffolding web application using Fano Framework.
