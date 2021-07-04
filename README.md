@@ -26,7 +26,7 @@ $ git clone https://github.com/fanoframework/fano-rate-limiting.git --recursive
 $ cd fano-rate-limiting
 $ ./tools/config.setup.sh
 $ ./build.sh
-$ sudo fanocli --deploy-scgi=rate-limting.fano
+$ sudo fanocli --deploy-scgi=rate-limiting.fano
 $ ./bin/app.cgi
 ```
 Open internet browser and go to `http://rate-limiting.fano`. You should see application.
